@@ -1,4 +1,4 @@
-# Trello
+# 📝 Trello
 
 This project was generated with Angular CLI version 8.1.2.
 
