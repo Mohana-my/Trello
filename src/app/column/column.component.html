@@ -6,47 +6,38 @@
             <div class="list-header" *ngIf="id == trello.id">
               <span class="list-title">{{boards.name}}</span>
             </div>
-            <div class="columns" *ngIf="id == trello.id" ondrop="drop(event)" ondragover="allowDrop(event)"> 
-                <div class="cards" id="card"  *ngFor="let card of boards.card"  draggable="true" ondragstart="drag(event)">{{card.name}}</div>
+            <div class="columns"  id="card" *ngIf="id == trello.id" ondrop="drop(event)" ondragover="allowDrop(event)"> 
+                <div class="cards"  id="cards" *ngFor="let card of boards.card"  draggable="true" ondragstart="drag(event)">{{card.name}}</div>
               </div>    
           
             <form  *ngIf="id == trello.id">
                 <input type="text"  class="text" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
                     <button class="button" type="reset" (click)="addcard(cardname.value,boards.id,trello.name)"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
             </form>	  
-        
     </div>
-    <div class="list-wrapper" *ngIf="id == trello.id">
-           
-            <div class="container">
-                 <!-- Modal -->
-                    <div class="modal fade" id="myModal" role="dialog">
-                      <div class="modal-dialog">
-                      
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h4 class="modal-title">Add the Board and Card</h4>
-                          </div>
-                          <div class="modal-body">
-                            Enter the Boardid:<input type="number"  [(ngModel)]="boardid"><br><br>
-                            Enter the Boardname:<input type="text" [(ngModel)]="boardname"  ><br><br>
-                            Enter the cardname: <input type="text" [(ngModel)]="cardname"  ><br><br>
-                            Enter the cardid:<input type="number"  [(ngModel)]="cardid" ><br><br>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="submit"type="reset"  class="btn btn-default" data-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-                        
+        <div class="list-wrapper" *ngIf="id == trello.id">
+          <div class="container">
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+                 <div class="modal-content">
+                      <div class="modal-header">
+                       <h4 class="modal-title">Add the Board and Card</h4>
                       </div>
-                    </div>
-                    
-                     
+                       <div class="modal-body">
+                          Enter the Boardid:<input type="number"  [(ngModel)]="boardid"><br><br>
+                          Enter the Boardname:<input type="text" [(ngModel)]="boardname"  ><br><br>
+                          Enter the cardname: <input type="text" [(ngModel)]="cardname"  ><br><br>
+                          Enter the cardid:<input type="number"  [(ngModel)]="cardid" ><br><br>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit"type="reset"  class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
                   </div>
-                  <button type="button" type="reset" class="btn" data-toggle="modal" data-target="#myModal">AddBoard</button>
-                  <button  class="button" type="reset" (click)="addBoard()"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
-               
-    </div>
+              </div>
+            </div>
+         </div>
+          <button type="button" type="reset" class="btn" data-toggle="modal" data-target="#myModal">AddBoard</button>
+          <button  class="button" type="reset" (click)="addBoard()"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
+        </div>
     
 </div>
