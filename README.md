@@ -4,10 +4,10 @@ This project was generated with Angular CLI version 8.1.2.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/trello`. The app will automatically reload if you change any of the source files.
 
 # Installation  
-- Download the repository from GitHub ()
+- Download the repository from GitHub (https://github.com/Mohana-my/Trello.git)
 - Install Node.js on your machine
 - `npm install` to install all necessary packages
 - `ng serve --open` to run the application in your browser
