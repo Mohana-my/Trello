@@ -1,0 +1,101 @@
+
+ 
+  .board {
+    overflow-x: scroll;
+    white-space: nowrap;
+    position: absolute;
+    top: 73px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #cd5a91;
+  }
+ 
+  .list-wrapper { 
+    width: 22em; 
+    background-color: #eee;
+    margin: .5em;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+  }
+ 
+  .list {
+    background-color: #eee;
+    border: none;
+    padding: .5em;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+  }
+
+  .list-header {
+    height: 3em;
+    line-height: 3em;
+    padding: 0 1em;
+  }
+ 
+  .list-title {
+    font-weight: bold;
+  }
+  .cards{
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    min-height: 4em;
+    padding: 1em;
+    border-radius: 3px;
+    margin-bottom: .5em;
+    background: #fff;
+  }
+  .add-card {
+    background: #cd5a91;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 0;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition-property: all;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+  }
+  .add-card:hover {
+    text-decoration: underline;
+    color: #666;
+    background-color: #ccc;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  .cards-controls {
+    position: absolute;
+    right: .5em;
+    top: .5em;
+    display: none;
+  }
+  
+  .cards:hover .cards-controls{
+    display: inline-block;
+  }
+
+
+  .ui-sortable-placeholder{
+    border: 1px dotted;
+    padding: 30px 20px;
+  }
+  
+.button{
+  width: 2em; 
+
+}
+.text{
+  width: 20em; 
+}
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
