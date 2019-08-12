@@ -6,9 +6,11 @@ This project was generated with Angular CLI version 8.1.2.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# _Installation for 
+- Download the repository from GitHub (https://github.com/nikkiboyd/Trello-Clone)
+- Install Node.js on your machine
+- `npm install` to install all necessary packages
+- `ng serve --open` to run the application in your browser
 
 ## Running unit tests
 
