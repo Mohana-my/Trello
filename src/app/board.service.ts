@@ -5,7 +5,7 @@ import { Trello } from './trello';
   providedIn: 'root'
 })
 export class BoardService {
-  public trello:Trello[]=[
+  public trello :Trello[]=[
     { 
         "id":1,"name":"WeddingPlan","board":[{
 
@@ -13,36 +13,37 @@ export class BoardService {
             "id" : 1,
             "name" : "Plan for Wedding",
            
-            "card" : [ {id:1, "name":"Announce the Engagment date" },{id:1, "name":"Hall Booking" },{id:1, "name":"Announce the Marriage date" }]
+            "card" : [ {"id":1, "name":"Announce the Engagment date" },{"id":1, "name":"Hall Booking" },{"id":1, "name":"Announce the Marriage date" }]
            },
           {
-            id : 2,
+            "id" : 2,
             "name" : "0-6 months Before To-Dos",
-            "card" : [ {id:2,"name":"Book &oder"},{id:2,"name":"Finalize Reception Menu"} ]
+            "card" : [ {"id":2,"name":"Book &oder"},{"id":2,"name":"Finalize Reception Menu"} ]
           },
           {
-            id : 3,
+            "id" : 3,
             "name" : "10 months Before To-dos",
-            "card" : [ {id:3,"name":"Book the Professionals"},{id:3,"name":"Research"} ]
+            "card" : [ {"id":3,"name":"Book the Professionals"},{"id":3,"name":"Research"} ]
           },
           {
-            id : 4,
+            "id" : 4,
             "name" : "Doing this week",
-            "card" : [ {id:4,"name":"Choose wedding Party"},{id:4,"name":"Prepare for Trips"} ]
+            "card" : [ {"id":4,"name":"Choose wedding Party"},{"id":4,"name":"Prepare for Trips"} ]
           }
       
     ]}
   ]
 
   
-  constructor() { }
+  constructor() { 
+  }
   getTrello(): Trello[] 
   {
     return this.trello;
   }
   addTrello(tname)
   {
-    return this.trello.push(tname)
+    return this.trello.unshift(tname)
   }
 
   pushCard(name:string,id:number,tname)
@@ -60,7 +61,7 @@ export class BoardService {
   }
 
   pushBoard(name)
-    {
+  {
       for(var i=0;i<this.trello.length;i++)
       {
         this.trello[i].board.push(name);

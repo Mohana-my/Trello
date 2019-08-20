@@ -6,7 +6,7 @@
         <span class="title">{{trello.name}}</span>
       </a>
     </div>  
-    <div class="add-card">
+    <div class="board add-card">
       <button type="button" type="reset" class="btn" data-toggle="modal" data-target="#myModal">Create new Board</button>
        <button  class="button" type="reset" (click)="addTrello()"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
     </div>  
@@ -30,7 +30,7 @@
           Enter the cardname:<input type="text" [(ngModel)]="cardname"><br><br>
         </div>
         <div class="modal-footer">
-          <button type="submit"type="reset"  class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit"type="reset"  class=" btn btn-primary" data-dismiss="modal">Close</button>
         </div>
       </div>
    </div>

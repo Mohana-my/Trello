@@ -1,21 +1,37 @@
 <app-nav></app-nav>
 
-<div class="board"  *ngFor="let trello of trello">
-    <h2 *ngIf="id == trello.id">{{trello.name}}</h2>
-    <div class="list-wrapper" id="board" *ngFor="let boards of trello.board"  >
-            <div class="list-header" *ngIf="id == trello.id">
-              <span class="list-title">{{boards.name}}</span>
-            </div>
-            <div class="columns"  id="card" *ngIf="id == trello.id" ondrop="drop(event)" ondragover="allowDrop(event)"> 
-                <div class="cards"  id="cards" *ngFor="let card of boards.card"  draggable="true" ondragstart="drag(event)">{{card.name}}</div>
-              </div>    
-          
-            <form  *ngIf="id == trello.id">
-                <input type="text"  class="text" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
-                    <button class="button" type="reset" (click)="addcard(cardname.value,boards.id,trello.name)"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
-            </form>	  
+<div class="board">
+    <h2 *ngIf="id==trello.id">{{trello.name}}</h2>
+    <div *ngIf="trello.board.length > 0; else defaultCard">
+      <div class="list-wrapper" id="board" *ngFor="let boards of trello.board">
+        <div class="list-header">
+          <span class="list-title" *ngIf="id==trello.id">{{boards.name}}</span>
+        </div>
+        <div class="columns"  id="card" ondrop="drop(event)" ondragover="allowDrop(event)" *ngIf="id==trello.id"> 
+            <div class="cards"  id="cards" *ngFor="let card of boards.card"   draggable="true" ondragstart="drag(event)">{{card.name}}</div>
+        </div>    
+        <form>
+            <input type="text"  class="text" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
+            <button class="button" type="reset" (click)="addcard(cardname.value,boards.id,trello.name)"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
+        </form>	  
+      </div>
     </div>
-        <div class="list-wrapper" *ngIf="id == trello.id">
+
+    <ng-template #defaultCard>
+      <div class="list-wrapper" id="board">
+          <div class="list-header">
+            <span class="list-title">{{boards.name}}</span>
+          </div>
+          <div class="columns"  id="card" ondrop="drop(event)" ondragover="allowDrop(event)"> 
+              <div class="cards"  id="cards" *ngFor="let card of boards.card" draggable="true" ondragstart="drag(event)">{{card.name}}</div>
+          </div>    
+          <form>
+              <input type="text"  class="text" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
+              <button class="button" type="reset" (click)="addcard(cardname.value,boards.id,trello.name)"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
+          </form>	  
+      </div>
+    </ng-template>
+        <div class="list-wrapper">
           <div class="container">
             <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog">
@@ -23,21 +39,23 @@
                       <div class="modal-header">
                        <h4 class="modal-title">Add the Board and Card</h4>
                       </div>
-                       <div class="modal-body">
-                          Enter the Boardid:<input type="number"  [(ngModel)]="boardid"><br><br>
-                          Enter the Boardname:<input type="text" [(ngModel)]="boardname"  ><br><br>
-                          Enter the cardname: <input type="text" [(ngModel)]="cardname"  ><br><br>
-                          Enter the cardid:<input type="number"  [(ngModel)]="cardid" ><br><br>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit"type="reset"  class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
+                      <div class="modal-body">
+                        Enter the Boardid:<input type="number"  [(ngModel)]="boardid"><br><br>
+                        <div *ngIf="trello.board.length"> Board id should be  greater than {{trello.board.length}}</div><br>
+                        Enter the Boardname:<input type="text" [(ngModel)]="boardname"  ><br><br>
+                        Enter the cardname: <input type="text" [(ngModel)]="cardname"  ><br><br>
+                        Enter the cardid:<input type="number"  [(ngModel)]="cardid" ><br><br>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit"type="reset"  class="btn btn-primary" data-dismiss="modal">Close</button>
+                      </div>
                   </div>
               </div>
             </div>
          </div>
           <button type="button" type="reset" class="btn" data-toggle="modal" data-target="#myModal">AddBoard</button>
-          <button  class="button" type="reset" (click)="addBoard()"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
+          <button  class="button" type="reset" ><i style="font-size:24px" class="fa" (click)="addBoard()">&#xf0fe;</i></button>
         </div>
-    
 </div>
+
+

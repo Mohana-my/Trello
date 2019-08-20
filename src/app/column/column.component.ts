@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ColumnComponent implements OnInit {
 
-  trello:Trello[]=[]
+  trello:Trello;
   Board = {};
   boardname:string
   boardid:number
@@ -23,9 +23,9 @@ constructor( private boardservice:BoardService,private route:ActivatedRoute) {
 }
 
 ngOnInit() {
-  this.trello=this.boardservice.getTrello();
-  this.route.params.subscribe(params => this.id = params['id']);
-  this.route.params.subscribe(params => this.name = params['name']);
+  this.name=this.route.snapshot.paramMap.get('name');
+  this.id=parseInt(this.route.snapshot.paramMap.get('id'));
+  this.trello=this.boardservice.getTrello().filter((trello) => trello.id === this.id)[0];
 }
 
  
@@ -33,22 +33,14 @@ ngOnInit() {
 
 addcard(cname:string,bid:number,trelloname:string)
 {
-  for(var i=0;i<this.trello.length;i++)
-    {
-    
-     if(this.trello[i].name === trelloname)  
-      {
-        this.boardservice.pushCard(cname,bid,trelloname);
-      }
-      
-    }
+ this.boardservice.pushCard(cname,bid,trelloname);
 }
     
 
 
 addBoard()
   {
-      var Name ={
+     var Name ={
         id: this.boardid,
         name:this.boardname,
        
@@ -59,7 +51,11 @@ addBoard()
           
           }
         ]} 
-      this.boardservice.pushBoard(Name)
+       
+          this.boardservice.pushBoard(Name)
+       
+
+     
       this.boardid = null;
       this.boardname= null;
       this.cardid =null;

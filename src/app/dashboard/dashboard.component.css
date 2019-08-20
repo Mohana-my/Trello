@@ -41,3 +41,12 @@
     background-color: #e2e4e6;
     color: #8c8c8c;
   }
+  .btn{
+    color:white;
+    font-weight: 700; 
+    font-size: 12pt;
+    line-height: 20px;
+    text-align: left;
+    float: left;
+    
+  }

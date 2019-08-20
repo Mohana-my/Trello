@@ -33,8 +33,8 @@ export class DashboardComponent implements OnInit {
         }]
     }
 
-    this.boardservice.addTrello(tname);
-
+    this.boardservice.addTrello(tname)
+    return this.trello
   }
 
 }
