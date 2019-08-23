@@ -33,9 +33,7 @@ export class BoardService {
       
     ]}
   ]
-
-  
-  constructor() { 
+constructor() { 
   }
   getTrello(): Trello[] 
   {

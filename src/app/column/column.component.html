@@ -1,15 +1,19 @@
 <app-nav></app-nav>
-
-<div class="board">
+<div class="board" id="sortable-div">
     <h2 *ngIf="id==trello.id">{{trello.name}}</h2>
     <div *ngIf="trello.board.length > 0; else defaultCard">
       <div class="list-wrapper" id="board" *ngFor="let boards of trello.board">
         <div class="list-header">
           <span class="list-title" *ngIf="id==trello.id">{{boards.name}}</span>
         </div>
-        <div class="columns"  id="card" ondrop="drop(event)" ondragover="allowDrop(event)" *ngIf="id==trello.id"> 
-            <div class="cards"  id="cards" *ngFor="let card of boards.card"   draggable="true" ondragstart="drag(event)">{{card.name}}</div>
-        </div>    
+        <div class="sortable-list"  id="dragdrop" *ngIf="id==trello.id"> 
+            
+          <div class="sortable-item"  id="nwjn" *ngFor="let card of boards.card">{{card.name}}
+          <div *ngIf="card.name==='Research'"><i class="fa fa-check-square-o" aria-hidden="true" data-toggle="modal" data-target="#checklist"></i></div>
+          <div class="card-controls"><i class="fa fa-clock-o" aria-hidden="true" data-toggle="modal" data-target="#xyz" ></i></div>
+          </div>
+          
+      </div>     
         <form>
             <input type="text"  class="text" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
             <button class="button" type="reset" (click)="addcard(cardname.value,boards.id,trello.name)"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
@@ -17,21 +21,26 @@
       </div>
     </div>
 
-    <ng-template #defaultCard>
-      <div class="list-wrapper" id="board">
+    <ng-template #defaultCard >
+        <div class="list-wrapper" id="dragdrop">
           <div class="list-header">
-            <span class="list-title">{{boards.name}}</span>
+            <span class="list-title" *ngIf="id==trello.id">{{boards.name}}</span>
           </div>
-          <div class="columns"  id="card" ondrop="drop(event)" ondragover="allowDrop(event)"> 
-              <div class="cards"  id="cards" *ngFor="let card of boards.card" draggable="true" ondragstart="drag(event)">{{card.name}}</div>
+          <div class="sortable-list"  id="dragdrop" *ngIf="id==trello.id"> 
+            
+              <div class="sortable-item"  id="nwjn" *ngFor="let card of boards.card">{{card.name}}
+              <div *ngIf="card.name==='Research'"><i class="fa fa-check-square-o" aria-hidden="true" data-toggle="modal" data-target="#checklist"></i></div>
+              <div class="card-controls"><i class="fa fa-clock-o" aria-hidden="true" data-toggle="modal" data-target="#xyz" ></i></div>
+              </div>
+              
           </div>    
           <form>
               <input type="text"  class="text" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
               <button class="button" type="reset" (click)="addcard(cardname.value,boards.id,trello.name)"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
-          </form>	  
-      </div>
+          </form>
+        </div>	  
     </ng-template>
-        <div class="list-wrapper">
+        <div class="list-wrapper" id="dragdrop">
           <div class="container">
             <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog">
@@ -56,6 +65,41 @@
           <button type="button" type="reset" class="btn" data-toggle="modal" data-target="#myModal">AddBoard</button>
           <button  class="button" type="reset" ><i style="font-size:24px" class="fa" (click)="addBoard()">&#xf0fe;</i></button>
         </div>
+        <div class="container">
+          <div class="modal fade" id="checklist" role="dialog">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                    <div class="modal-header">
+                     <h4 class="modal-title">checkList</h4>
+                    </div>
+                    <div class="modal-body">
+                      <ul>
+                        <li><input type="checkbox" name="" id="box1" /><label for="box1">Vediographer</label></li>
+                        <li><input type="checkbox" name="" id="box2" /><label for="box2">Photographer</label></li>
+                        <li><input type="checkbox" name="" id="box3" /><label for="box3">Wedding dress</label></li>
+                        <li><input type="checkbox" name="" id="box4" /><label for="box4">caterer</label></li>
+                      </ul>
+                      <div class="count">Completed Task: </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit"type="reset"  class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+       </div>
+       <div class="container">
+          <div class="modal fade" id="xyz" role="dialog">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                    <div class="modal-body">
+                      DUE DATE:<input type="date" name="duedate" id="date">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit"type="reset"  id="closeid" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+       </div>
 </div>
-
-

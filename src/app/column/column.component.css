@@ -8,7 +8,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: #cd5a91;
+    background: #007bff;
   }
  
   .list-wrapper { 
@@ -38,7 +38,7 @@
   .list-title {
     font-weight: bold;
   }
-  .cards{
+  .sortable-item{
     box-sizing: border-box;
     position: relative;
     width: 99%;
@@ -49,7 +49,7 @@
     background: #fff;
   }
   .add-card {
-    background: #cd5a91;
+    background: #007bff;
     font-size: 14px;
     line-height: 18px;
     margin-top: 0;
@@ -89,4 +89,28 @@
 }
 .text{
   width: 20em; 
+}
+.card-controls {
+  position: absolute;
+  right: .5em;
+  top: .5em;
+  display: none;
+}
+
+.cards:hover .card-controls{
+  display: inline-block;
+}
+ul {
+  counter-reset: checked;
+}
+
+li input:checked {
+  counter-increment: checked;
+}
+
+.count:after {
+  content: counter(checked);
+}
+.highlight{
+  background: #007bff;
 }

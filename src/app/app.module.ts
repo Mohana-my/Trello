@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+declare var jQuery: any;
 
 import { AppRoutingModule ,RoutingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
