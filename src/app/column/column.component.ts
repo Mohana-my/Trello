@@ -23,6 +23,7 @@ export class ColumnComponent implements OnInit {
   counter: any;
   checked: boolean;
   checklist;
+  bid:number
  
 
 constructor( private boardservice:BoardService,private route:ActivatedRoute) {
@@ -34,39 +35,33 @@ ngOnInit() {
   this.trello=this.boardservice.getTrello().filter((trello) => trello.id === this.id)[0];
   $(document).ready(function(){
     $('#sortable-div .sortable-list').sortable({
-     connectWith: '#sortable-div .sortable-list',
-      placeholder:  "highlight",
+     connectWith: '#sortable-div .sortable-list'
    });
-    
-   
   });
-
-
-  
-  
 }
 addcard(cname:string,bid:number,trelloname:string)
 {
  this.boardservice.pushCard(cname,bid,trelloname);
 }
-addBoard()
+addBoard(trelloname:string)
   {
+   
+
      var Name ={
-        id: this.boardid,
-        name:this.boardname,
-       
+        id:Math.floor(Math.random()*100+1),
+       name:this.boardname,
         card:[
          { 
-            id :this.cardid,
+            id :Math.floor(Math.random()*100+1),
            name:this.cardname
           
           }
-        ]} 
+      ]} 
+      if(this.trello.name === trelloname)
+      {
+        this.boardservice.pushBoard(Name,trelloname);
+      }
        
-          this.boardservice.pushBoard(Name)
-       
-
-     
       this.boardid = null;
       this.boardname= null;
       this.cardid =null;

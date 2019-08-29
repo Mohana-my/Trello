@@ -58,11 +58,16 @@ constructor() {
     }
   }
 
-  pushBoard(name)
+  pushBoard(name,trelloname)
   {
       for(var i=0;i<this.trello.length;i++)
       {
-        this.trello[i].board.push(name);
+        if(this.trello[i].name=== trelloname)
+        {
+          this.trello[i].board.push(name);
+          break
+        }
+       
       }
     }
 }

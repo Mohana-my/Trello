@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 <div class="boards-wrapper col-md-6">
-    <h2>Boards</h2>
+    <h2>Plans</h2>
     <div id="boards" *ngFor="let trello of trello">
       <a class="board" [routerLink]="['/trello',trello.id,trello.name]">
         <span class="title">{{trello.name}}</span>
@@ -19,14 +19,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Add the Board and Card</h4>
+          <h4 class="modal-title">Add new Trello</h4>
         </div>
         <div class="modal-body">
-          Enter the Trelloid:<input type="number"  [(ngModel)]="trelloid" ><br><br>
           Enter the Trelloname:<input type="text"  [(ngModel)]="trelloname"  ><br><br>
-          Enter the Boardid:<input type="text" type="number" [(ngModel)]="boardid" ><br><br>
           Enter the Boardname:<input [(ngModel)]="boardname"  ><br><br>
-          Enter the cardid:<input  type="number" [(ngModel)]="cardid" ><br><br>
           Enter the cardname:<input type="text" [(ngModel)]="cardname"><br><br>
         </div>
         <div class="modal-footer">

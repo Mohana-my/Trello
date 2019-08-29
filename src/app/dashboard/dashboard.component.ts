@@ -23,16 +23,15 @@ export class DashboardComponent implements OnInit {
     }
   addTrello(){
     var tname={
-      id:this.trelloid,
+      id:Math.floor(Math.random()*1000+1),
       name:this.trelloname,
       board:[
         {
-          id:this.boardid,
+          id:Math.floor(Math.random()*100+1),
           name:this.boardname,
-          card:[{id:this.cardid,name:this.cardname}]
+          card:[{id:Math.random(),name:this.cardname}]
         }]
     }
-
     this.boardservice.addTrello(tname)
     return this.trello
   }
