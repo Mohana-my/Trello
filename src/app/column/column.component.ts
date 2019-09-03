@@ -41,7 +41,14 @@ ngOnInit() {
 }
 addcard(cname:string,bid:number,trelloname:string)
 {
- this.boardservice.pushCard(cname,bid,trelloname);
+for(var i=0;i<this.trello.board.length;i++)
+  {
+    if(this.trello.board[i].id === bid)
+    {
+      this.boardservice.pushCard(cname,bid,trelloname);
+    }
+  }
+ 
 }
 addBoard(trelloname:string)
   {
