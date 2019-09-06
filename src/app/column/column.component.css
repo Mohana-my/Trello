@@ -1,6 +1,4 @@
-
- 
-  .board {
+.board {
     overflow-x: scroll;
     white-space: nowrap;
     position: absolute;
@@ -9,6 +7,12 @@
     bottom: 0;
     left: 0;
     background: #007bff;
+  }
+  .bcbc{
+    text-align: initial;
+    margin-top: 23px;
+    color: black;
+    padding: 16px;
   }
  
   .list-wrapper { 
@@ -48,72 +52,15 @@
     margin-bottom: .5em;
     background: #fff;
   }
-  .add-card {
-    background: #007bff;
-    font-size: 14px;
-    line-height: 18px;
-    margin-top: 0;
-    padding: 8px 10px;
-    cursor: pointer;
-    transition-property: all;
-    transition-duration: 150ms;
-    transition-timing-function: ease;
-  }
-  .add-card:hover {
-    text-decoration: underline;
-    color: #666;
-    background-color: #ccc;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
-  .cards-controls {
-    position: absolute;
-    right: .5em;
-    top: .5em;
-    display: none;
+ 
+  ul {
+    counter-reset: checked;
   }
   
-  .cards:hover .cards-controls{
-    display: inline-block;
-  }
-
-
-  .ui-sortable-placeholder{
-    border: 1px dotted;
-    padding: 30px 20px;
+  li input:checked {
+    counter-increment: checked;
   }
   
-.card-controls {
-  position: absolute;
-  right: .5em;
-  top: .5em;
-  display: none;
-}
-
-.cards:hover .card-controls{
-  display: inline-block;
-}
-ul {
-  counter-reset: checked;
-}
-
-li input:checked {
-  counter-increment: checked;
-}
-
-.count:after {
-  content: counter(checked);
-}
-
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  padding: 6px 0px;
-  border-radius: 15px;
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.42857;
-  background-color: #fff;
-  position: relative;
-  left:100%;
-}
+  .count:after {
+    content: counter(checked);
+  }

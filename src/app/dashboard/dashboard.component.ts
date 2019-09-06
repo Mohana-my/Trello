@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardService } from '../board.service';
 import { Trello } from '../trello';
+declare var $: any;
 
 @Component({
   selector: 'app-dashboard',

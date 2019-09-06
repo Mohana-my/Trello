@@ -12,4 +12,7 @@ export interface Board{
 export interface Card{
     id:number;
     name:string;
+    date?:any;
+    image?:any;
+
 }

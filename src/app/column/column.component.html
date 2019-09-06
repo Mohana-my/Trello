@@ -1,38 +1,46 @@
 <app-nav></app-nav>
-<div class="board" id="sortable-div">
-    <h3 *ngIf="id === trello.id">{{trello.name}}</h3>
-    <button type="button" class="btn btn-default btn-circle btn-lg"><i class="fa fa-plus"></i></button>
-    <div *ngIf="trello.board.length > 0; else defaultCard">
-      <div class="list-wrapper container-fluid" id="board" *ngFor="let boards of trello.board">
+<div class="board ">
+    <h3 class="bcbc" *ngIf="id === trello.id">{{trello.name}}</h3>
+    <div  *ngIf="trello.board.length > 0; else defaultCard">
+      <div class="list-wrapper  container-fluid" id="board" *ngFor="let boards of trello.board">
         <div class="list-header row">
           <span class="list-title col-sm-3 col-md-4" *ngIf="id===trello.id">{{boards.name}}</span>
         </div>
         <div class="sortable-list"  id="dragdrop" *ngIf="id===trello.id"> 
-          <div class="sortable-item"  id="nwjn" *ngFor="let card of boards.card">{{card.name}}
-          <div *ngIf="card.name ==='Research'"><i class="fa fa-check-square-o" aria-hidden="true" data-toggle="modal" data-target="#checklist"></i></div>
+          <div class="sortable-item"  id="card" *ngFor="let card of boards.card">{{card.name}}
+            <div *ngIf="card.name ==='Research'">{{count}}<i class="fa fa-check-square-o" aria-hidden="true" data-toggle="modal" data-target="#checklist"></i></div>
           </div>
         </div>     
-        <form class="row">
-            <input type="text"  class="text col-sm-3 col-md-4" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
+        <form class="find">
+            <input type="text"  class="text col-md-4" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
             <button class="button" type="reset" (click)="addcard(cardname.value,boards.id,trello.name)"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
-        </form>	  
-      </div>
+        </form>	 
+        </div>
+        <div class="list-wrapper">
+          <button type="button" type="reset" class="btn">Add Board</button>
+          <button  class="button" type="reset" ><i style="font-size:24px" data-toggle="modal" data-target="#myModal" class="fa">&#xf0fe;</i></button>
+        </div>
     </div>
-
     <ng-template #defaultCard >
         <div class="list-wrapper" id="dragdrop">
           <div class="list-header">
             <span class="list-title" *ngIf="id==trello.id">{{boards.name}}</span>
           </div>
           <div class="sortable-list"  id="dragdrop" *ngIf="id==trello.id"> 
-            <div class="sortable-item"  id="nwjn" *ngFor="let card of boards.card">{{card.name}}
-              <div *ngIf="card.name ==='Research'"><i class="fa fa-check-square-o" aria-hidden="true" data-toggle="modal" data-target="#checklist"></i></div>
+            <div class="sortable-item" id="card" *ngFor="let card of boards.card">{{card.name}}
+              <div *ngIf="card.name ==='Research'">{{count}}<i class="fa fa-check-square-o" aria-hidden="true" data-toggle="modal" data-target="#checklist"></i></div>
             </div>
+            <button type="button" type="reset" class="btn" data-toggle="modal" data-target="#myModal">AddBoard</button>
+            <button  class="button" type="reset" ><i style="font-size:24px" class="fa" (click)="addBoard(trello.name)">&#xf0fe;</i></button>
           </div>    
           <form>
             <input type="text"  class="text" #cardname name="focus" required class="required" placeholder="Enter the cardname" />
             <button class="button" type="reset" (click)="addcard(cardname.value,boards.id,trello.name)"><i style="font-size:24px" class="fa">&#xf0fe;</i></button>
           </form>
+          <div class="list-wrapper">
+              <label type="reset" class="btn">Add Board</label>
+              <button  class="button" type="reset" ><i style="font-size:24px" class="fa" data-toggle="modal" data-target="#myModal">&#xf0fe;</i></button>
+            </div>
         </div>	  
     </ng-template>
         <div class="list-wrapper" id="dragdrop">
@@ -44,8 +52,8 @@
                        <h4 class="modal-title">Add new Board and Card</h4>
                       </div>
                       <div class="modal-body">
-                        Enter the Boardname:<input type="text" [(ngModel)]="boardname"  ><br><br>
-                        Enter the cardname: <input type="text" [(ngModel)]="cardname"  ><br><br>
+                        Enter the Boardname:<input type="text"required  [(ngModel)]="boardname"  ><br><br>
+                        Enter the cardname: <input type="text" required [(ngModel)]="cardname"  ><br><br>
                       </div>
                       <div class="modal-footer">
                         <button type="submit"type="reset"  class="btn btn-primary" (click)="addBoard(trello.name)" data-dismiss="modal">Close</button>
@@ -54,30 +62,31 @@
               </div>
             </div>
          </div>
-          <button type="button" type="reset" class="btn" data-toggle="modal" data-target="#myModal">AddBoard</button>
-          <button  class="button" type="reset" ><i style="font-size:24px" class="fa" (click)="addBoard(trello.name)">&#xf0fe;</i></button>
-        </div>
+      </div>
         <div class="container">
           <div class="modal fade" id="checklist" role="dialog">
             <div class="modal-dialog">
                <div class="modal-content">
                     <div class="modal-header">
-                     <h4 class="modal-title">checkList</h4>
+                     <h4 class="modal-title" style="text-align:center">CheckList</h4>
                     </div>
                     <div class="modal-body">
-                      <ul>
+                      <ul class="checkboxes">
                         <li><input type="checkbox" name="" id="box1" /><label for="box1">Vediographer</label></li>
                         <li><input type="checkbox" name="" id="box2" /><label for="box2">Photographer</label></li>
                         <li><input type="checkbox" name="" id="box3" /><label for="box3">Wedding dress</label></li>
                         <li><input type="checkbox" name="" id="box4" /><label for="box4">caterer</label></li>
                       </ul>
                       <div class="count">Completed Task: </div>
+                      
                     </div>
                     <div class="modal-footer">
-                      <button type="submit"type="reset"  class="btn btn-primary" data-dismiss="modal">Close</button>
+                      <button type="submit" type="reset"  id="check" class="btn btn-primary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
           </div>
        </div>
+       
+      
 </div>

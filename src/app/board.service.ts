@@ -23,7 +23,7 @@ export class BoardService {
           {
             "id" : 3,
             "name" : "10 months Before To-dos",
-            "card" : [ {"id":3,"name":"Book the Professionals"},{"id":3,"name":"Research"} ]
+            "card" : [ {"id":3,"name":"Book the Professionals","date":'27 Sep,1997'},{"id":3,"name":"Research"} ]
           },
           {
             "id" : 4,

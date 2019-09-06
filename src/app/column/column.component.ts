@@ -19,13 +19,7 @@ export class ColumnComponent implements OnInit {
   pname:string
   id:number
   name:string
-  counts:number
-  counter: any;
-  checked: boolean;
-  checklist;
-  bid:number
- 
-
+  count:any
 constructor( private boardservice:BoardService,private route:ActivatedRoute) {
 }
 
@@ -34,20 +28,27 @@ ngOnInit() {
   this.id=parseInt(this.route.snapshot.paramMap.get('id'));
   this.trello=this.boardservice.getTrello().filter((trello) => trello.id === this.id)[0];
   $(document).ready(function(){
-    $('#sortable-div .sortable-list').sortable({
-     connectWith: '#sortable-div .sortable-list'
+    $('.sortable-list').sortable({
+     connectWith: '.sortable-list',
+     opacity:'0.5',
+     cursor:'move'
    });
   });
 }
 addcard(cname:string,bid:number,trelloname:string)
 {
- this.boardservice.pushCard(cname,bid,trelloname);
+  for(var i=0;i<this.trello.board.length;i++)
+  {
+    if(this.trello.board[i].id === bid)
+    {
+      this.boardservice.pushCard(cname,bid,trelloname);
+    }
+  }
+ 
 }
 addBoard(trelloname:string)
   {
-   
-
-     var Name ={
+    var Name ={
         id:Math.floor(Math.random()*100+1),
        name:this.boardname,
         card:[
