@@ -12,12 +12,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/trello`. The
 - `npm install` to install all necessary packages
 - `ng serve --open` to run the application in your browser
 
-### Necessary Features & Functionality
-| Feature | Description | Notes |
-|--|--|--|
-| Add Board| Create new board when user clicks addboard | Ask for the board name,board_id,card_name,card_name before creating,After Entering all the details please press + button |
-|Enter card name| Create new card| Enter the cardName and + Button|
-
 # Technologies
 - Typescript 
 - Karma
